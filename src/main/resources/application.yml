@@ -1,6 +1,5 @@
 server:
   port: 8080
-  forward-headers-strategy: framework
 
 spring:
   application:
@@ -26,7 +25,7 @@ spring:
       routes:
         # 1. User & Test Service
         - id: user-service-route
-          uri: lb://TEST-SERVICE
+          uri: lb://USER-SERVICE
           predicates:
             - Path=/api/users/**
 
@@ -68,11 +67,13 @@ springdoc:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://eureka:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
   instance:
     prefer-ip-address: true
+    ip-address: ${HOST_IP:192.168.10.141}
+    non-secure-port: ${HOST_PORT:8080}
 
 management:
   endpoints:

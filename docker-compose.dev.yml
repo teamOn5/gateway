@@ -1,0 +1,20 @@
+networks:
+  spharos:
+    external: true
+
+services:
+  gateway-service:
+    container_name: app-gateway-dev
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    networks:
+      - spharos
+    environment:
+      - SPRING_PROFILES_ACTIVE=dev
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka:8761/eureka/
+      - HOST_IP=192.168.10.141
+      - HOST_PORT=8080
+    restart: always
