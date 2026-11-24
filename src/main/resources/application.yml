@@ -1,5 +1,6 @@
 server:
   port: 8080
+  forward-headers-strategy: framework
 
 spring:
   application:
@@ -25,7 +26,7 @@ spring:
       routes:
         # 1. User & Test Service
         - id: user-service-route
-          uri: lb://USER-SERVICE
+          uri: lb://TEST-SERVICE
           predicates:
             - Path=/api/users/**
 
