@@ -6,6 +6,18 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - PATCH
+              - DELETE
+              - OPTIONS
+            allowedHeaders: "*"
       discovery:
         locator:
           enabled: true
@@ -35,10 +47,26 @@ spring:
           predicates:
             - Path=/api/notifications/**
 
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    urls:
+      - name: 🔔 Notification Service
+        url: /api/notifications/v3/api-docs
+      - name: 👤 User Service
+        url: /api/users/v3/api-docs
+      - name: 📺 Live Service
+        url: /api/lives/v3/api-docs
+      - name: 💬 Chat Service
+        url: /api/chats/v3/api-docs
+
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://172.31.29.243:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://15.164.172.146:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
   instance:
