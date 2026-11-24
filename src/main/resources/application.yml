@@ -57,12 +57,13 @@ springdoc:
     urls:
       - name: 🔔 Notification Service
         url: /api/notifications/v3/api-docs
-      - name: 👤 User Service
-        url: /api/users/v3/api-docs
-      - name: 📺 Live Service
-        url: /api/lives/v3/api-docs
-      - name: 💬 Chat Service
-        url: /api/chats/v3/api-docs
+      # 현재 노트북 로컬 환경에 미구동된 서비스는 필요 시 주석 해제하여 사용
+      # - name: 👤 User Service
+      #   url: /api/users/v3/api-docs
+      # - name: 📺 Live Service
+      #   url: /api/lives/v3/api-docs
+      # - name: 💬 Chat Service
+      #   url: /api/chats/v3/api-docs
 
 eureka:
   client:
