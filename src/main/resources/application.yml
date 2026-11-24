@@ -54,10 +54,10 @@ springdoc:
     enabled: true
     path: /swagger-ui.html
     urls:
-      - name: 🔔 Notification Service
-        url: /api/notifications/v3/api-docs
       - name: 👤 User Service
         url: /api/users/v3/api-docs
+      - name: 🔔 Notification Service
+        url: /api/notifications/v3/api-docs
       - name: 📺 Live Service
         url: /api/lives/v3/api-docs
       - name: 💬 Chat Service
@@ -66,7 +66,7 @@ springdoc:
 eureka:
   client:
     service-url:
-      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://15.164.172.146:8761/eureka/}
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://172.31.29.243:8761/eureka/}
     register-with-eureka: true
     fetch-registry: true
   instance:
@@ -80,16 +80,3 @@ management:
   endpoint:
     health:
       show-details: always
-
-springdoc:
-  api-docs:
-    enabled: true
-    path: /v3/api-docs
-  swagger-ui:
-    enabled: true
-    path: /swagger-ui.html
-    urls:
-      - name: "User Service"
-        url: /api/users/v3/api-docs
-      - name: "Notification Service"
-        url: /api/notifications/v3/api-docs
