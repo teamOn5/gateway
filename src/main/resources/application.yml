@@ -29,6 +29,12 @@ spring:
           predicates:
             - Path=/api/chats/**
 
+        # 4. Notification Service
+        - id: notification-service-route
+          uri: lb://NOTIFICATION-SERVICE
+          predicates:
+            - Path=/api/notifications/**
+
 eureka:
   client:
     service-url:
