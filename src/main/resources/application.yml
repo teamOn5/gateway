@@ -24,29 +24,61 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        # 1. User & Test Service
-        - id: user-service-route
-          uri: lb://TEST-SERVICE
+        # Member Service
+        - id: member-service
+          uri: lb://member-service
           predicates:
-            - Path=/api/users/**
+            - Path=/member-service/**
+          filters:
+            - StripPrefix=1
 
-        # 2. Live & Streaming Service
-        - id: live-service-route
-          uri: lb://LIVE-SERVICE
+        # Product Service
+        - id: product-service
+          uri: lb://product-service
           predicates:
-            - Path=/api/lives/**
+            - Path=/product-service/**
+          filters:
+            - StripPrefix=1
 
-        # 3. Chat Service
-        - id: chat-service-route
-          uri: lb://CHAT-SERVICE
+        # Order Service
+        - id: order-service
+          uri: lb://order-service
           predicates:
-            - Path=/api/chats/**
+            - Path=/order-service/**
+          filters:
+            - StripPrefix=1
 
-        # 4. Notification Service
-        - id: notification-service-route
-          uri: lb://NOTIFICATION-SERVICE
+        # Payment Service
+        - id: payment-service
+          uri: lb://payment-service
           predicates:
-            - Path=/api/notifications/**
+            - Path=/payment-service/**
+          filters:
+            - StripPrefix=1
+
+        # Live Service
+        - id: live-service
+          uri: lb://live-service
+          predicates:
+            - Path=/live-service/**
+          filters:
+            - StripPrefix=1
+
+        # Chat Service
+        - id: chat-service
+          uri: lb://chat-service
+          predicates:
+            - Path=/chat-service/**
+          filters:
+            - StripPrefix=1
+
+        # Notification Service
+        - id: notification-service
+          uri: lb://notification-service
+          predicates:
+            - Path=/notification-service/**
+          filters:
+            - StripPrefix=1
 
 springdoc:
   api-docs:
@@ -56,14 +88,20 @@ springdoc:
     path: /swagger-ui.html
     urls:
       - name: 🔔 Notification Service
-        url: /api/notifications/v3/api-docs
+        url: /notification-service/api/notifications/v3/api-docs
       # 현재 노트북 로컬 환경에 미구동된 서비스는 필요 시 주석 해제하여 사용
-      # - name: 👤 User Service
-      #   url: /api/users/v3/api-docs
+      # - name: 👤 Member Service
+      #   url: /member-service/v3/api-docs
+      # - name: 📦 Product Service
+      #   url: /product-service/v3/api-docs
+      # - name: 🛒 Order Service
+      #   url: /order-service/v3/api-docs
+      # - name: 💳 Payment Service
+      #   url: /payment-service/v3/api-docs
       # - name: 📺 Live Service
-      #   url: /api/lives/v3/api-docs
+      #   url: /live-service/v3/api-docs
       # - name: 💬 Chat Service
-      #   url: /api/chats/v3/api-docs
+      #   url: /chat-service/v3/api-docs
 
 eureka:
   client:
