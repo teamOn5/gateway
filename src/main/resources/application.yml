@@ -24,6 +24,14 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
+        # User Service (Auth + Member + Seller + Manager)
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user-service/**
+          filters:
+            - StripPrefix=1
+
         # Member Service
         - id: member-service
           uri: lb://member-service
