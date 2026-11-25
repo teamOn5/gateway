@@ -80,6 +80,15 @@ spring:
           filters:
             - StripPrefix=1
 
+        # Shop Service
+        - id: shop-service
+          uri: lb://shop-service
+          predicates:
+            - Path=/shop-service/**
+          filters:
+            - StripPrefix=1
+            
+
 springdoc:
   api-docs:
     enabled: true
